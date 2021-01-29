@@ -1,0 +1,49 @@
+.item-container{
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:75%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: background 1s ease;
+    cursor:pointer;
+    margin: 5px;
+}
+
+.item-container.good{
+    box-shadow: 0 0 4px green;
+}
+
+.item-container.bad{
+    box-shadow: 0 0 4px red;
+}
+
+.item-container.good:hover{
+    background-color: red;
+}
+
+.item-container.bad:hover{
+    background-color: green;
+}
+
+.item-container.add{
+    border-style: dashed;
+    box-shadow: none;
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+}
+
+.item-container.add:hover{
+    opacity: 1;
+}
+
+.input-text-area{
+    font-size: 1.4em;
+    width:100%;
+    height:100%;
+    max-height: 100%;
+    border: none;
+    resize: none;
+    text-align: center;
+}
