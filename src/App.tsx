@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
+import CanvasContainer from './components/CanvasContainer/CanvasContainer';
 import DayContainer from './components/DayContainer/DayContainer';
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
             <div className="main-container">
                 {dayContainers}
             </div>
+            <CanvasContainer />
         </div>
     );
 }
