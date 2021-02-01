@@ -1,14 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
-import {Camera, PerspectiveCamera, Scene, WebGLRenderer} from 'three';
+import {Group, PerspectiveCamera, Scene, WebGLRenderer} from 'three';
 
 const CanvasContainer:React.FC<{}> = () =>{
     const canvas=useRef<HTMLCanvasElement>(null)
-
+    let sphereGrp:Group;
     const distance=400;
 
     function createSpheres(scene:Scene){
-        const sphereGrp=new THREE.Group();
+        sphereGrp=new THREE.Group();
         for(var i=0; i < 1000; i++ ) {
             var sphere=new THREE.SphereGeometry(4, Math.random() * 12 , Math.random() *12);
             var material = new THREE.MeshPhongMaterial({
@@ -80,6 +80,13 @@ const CanvasContainer:React.FC<{}> = () =>{
     }
 
     function render(camera:PerspectiveCamera,scene:Scene,renderer:WebGLRenderer){
+        for(var i =0; i < sphereGrp.children.length ; i++){
+            var object=sphereGrp.children[i];
+            object.rotation.y+=Math.PI/5;
+            if(i < 30){
+                object.position.x-=10;
+            }
+        }
         renderer.render(scene, camera)    
     }
 
@@ -109,6 +116,7 @@ const CanvasContainer:React.FC<{}> = () =>{
             document.addEventListener('mousemove', (e)=>onMouseMove(e,camera,scene), false)
             animate(camera,scene,renderer);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return <canvas style={{position:'absolute',top:'0',left:'0',zIndex:-99999}}ref={canvas}>
